@@ -304,7 +304,7 @@ if (sortptn == 17) {
 }
 	n = 0;
 	while (monsterdata[n][3] < 30) n++;
-	monselect = '<select name="mnum" onChange="showmobdata();bbtshow();" size="8"><option value="' + n + '" selected>' + monsterdata[n][0] + '</option>';
+	monselect = '<select name="mnum" onChange="showmobdata();bbtshow();" size="7" style="width: 200px;"><option value="' + n + '" selected>' + monsterdata[n][0] + '</option>';
 	tmp = new Array();
 
 	for (i=0; i<n+1; i++) tmp[i] = ''
@@ -349,7 +349,7 @@ function showmobdata() {
 		msupport[4] = 0;
 		MobSupportLvView4.innerHTML = supoff;
 	}
-	
+
 	readmob();
 	showmoninfo();
 	if (!condbonus() && condbonusdata) { readbonus(0); statuscalc(1); condbonusdata = false; }
@@ -369,7 +369,7 @@ function showmobdata() {
 	MobMdef.innerHTML = mobmdef + '+' + mobimdef;
 	MobLuk.innerHTML = mobluk*2/10;
 	MobExp.innerHTML = mobbasexp + '/' + mobjobexp;
-	
+
 	if (monsterdata[mnum][19] > 2) MobClass.innerHTML = clsname[0];
 	else MobClass.innerHTML = clsname[monsterdata[mnum][19]];
 	MobScale.innerHTML = propname[mobscale+20];
@@ -381,16 +381,17 @@ function showmobdata() {
 // Just clean it.
 function showmoninfo() {
 	i = monsterdata[mnum][23];
-	
+	MonName.innerHTML =  '<a href=\"https://ratemyserver.net/mob_db.php?mob_id=' + monsterid[i] + '&small=1\" target=\"_blank\">' +monsterdata[mnum][0] + ' [id: ' + monsterid[i] + ']</a>';
+
 	// Monster Image
 	MonImg.innerHTML =  '<img src="img2/monster/' + i + '.gif">';
-	
+
 	// Monster Stats
 	meh = '<table width="100%" table border="1" bordercolor="#D6D6D6" cellspacing="1"><tr><td class="gray" width="25%">STR</td><td width="25%" align="right">'+monsterdata[mnum][4]+'</td><td class="gray" width="25%">INT</td><td width="25%" align="right">'+monsterdata[mnum][5]+'</td></tr>';
 	meh += '<tr><td class="gray">AGI</td><td align="right">'+monsterdata[mnum][8]+'</td><td class="gray">DEX</td><td align="right">'+monsterdata[mnum][7]+'</td></tr>';
 	meh += '<tr><td class="gray">VIT</td><td align="right">'+monsterdata[mnum][6]+'</td><td class="gray">LUK</td><td align="right">'+monsterdata[mnum][9]+'</td></tr></table>';
 	MonStats.innerHTML = meh;
-	
+
 	// Monster Location
 	amount = monsterloca[i][0];
 	places = '';
@@ -401,7 +402,7 @@ function showmoninfo() {
 
 		where = monsterloca[i][z];
 		mobs = monsterloca[i][z+1];
-		
+
 		places += locations[where][0];
 		places += '</td><td>';
 		places += locations[where][1];
@@ -413,7 +414,7 @@ function showmoninfo() {
 	meh += places;
 	meh += '</table>';
 	MonLocation.innerHTML = meh;
-	
+
 	// Monster Skill
 	amount = monsterskill[i][0];
 	meh = '<br><ul>';
@@ -423,7 +424,7 @@ function showmoninfo() {
 		skillz += '<li>';
 		tmp = monsterskill[i][z];
 		tmp2 = monsterskill[i][z+1];
-	
+
 		skillz += 'Lv ' + tmp2 + ' - ';
 		skillz += skilldata[tmp][0];
 		skillz += '</li>';
@@ -432,7 +433,7 @@ function showmoninfo() {
 	meh += skillz;
 	meh += '</ul>';
 	MonSkill.innerHTML = meh;
-	
+
 	// Monster AI
 	amount = monsterabil[i][0];
 	meh = '<br><ul>';
@@ -448,10 +449,10 @@ function showmoninfo() {
 	meh += AI;
 	meh += '</ul>';
 	MonAI.innerHTML = meh;
-	
+
 	// Monster Drop
 	MonDrop.innerHTML = monsterdrop[i];
-	
+
 	// Monster Element List - v2
 	meh = '<table width="100%" table border="1" bordercolor="#D6D6D6" cellspacing="1">';
 	tmp = '';
@@ -459,7 +460,7 @@ function showmoninfo() {
 	tmp[0] = new Array(5);
 	tmp[1] = new Array(5);
 	tmp2 = '';
-	
+
 	for(i=0;i<=4;i++) {
 		if (pcong[mobproplv-1][i][mobprop] > 100) tmp2='8FBC8F';
 		else if (pcong[mobproplv-1][i][mobprop] < 100) tmp2='BC8F8F';
@@ -472,12 +473,12 @@ function showmoninfo() {
 		else tmp2='';
 		tmp[1][i-5] = '<td class="gray">'+propname[i]+'</td><td><font color="#'+tmp2+'">'+pcong[mobproplv-1][i][mobprop]+'%</font></td></tr>';
 	}
-	
+
 	for(i=0;i<=4;i++) meh+=tmp[0][i]+tmp[1][i];
-	
-	meh += '</table>';	
+
+	meh += '</table>';
 	MonElem.innerHTML = meh;
-		
+
 }
 
 function readmob() {
@@ -498,7 +499,7 @@ function readmob() {
 		mobdex -= Math.floor(mobdex/2);
 		mobint -= Math.floor(mobint/2);
 	}
-	if (msupport[64]) {		
+	if (msupport[64]) {
 		mobagi -= Math.floor(mobagi*(0.1*msupport[64]));
 		mobdex -= Math.floor(mobdex*(0.1*msupport[64]));
 	}
@@ -555,7 +556,7 @@ function readmob() {
 		mobminvd = Math.round(mobminvd * (1-msupport[215]*0.05));
 		mobmaxvd = Math.round(mobmaxvd * (1-msupport[215]*0.05));
 	}
-	
+
 	if (msupport[51]) {
 		mobprop = 1;
 		mobproplv = 1;
@@ -639,13 +640,13 @@ function readmob() {
 		mobminvd = 0;
 		mobmaxvd = 0;
 	}
-	
+
 	if (msupport[117] && monsterdata[mnum][1] >= 4) {
 		mobhit = Math.floor(mobhit * (75/100));
 		mobminatk = Math.floor(mobminatk/2);
 		mobmaxatk = Math.floor(mobmaxatk/2);
 	}
-	
+
 	if (msupport[126]) {
 		mobminatk -= Math.floor(mobminatk * (25/100));
 		mobmaxatk -= Math.floor(mobmaxatk * (25/100));
@@ -717,7 +718,7 @@ function bbtshow() {
 	}
 
 	btallhit = bthit * psvpc[1] + bthit * psvpc[0]*(100-psvpc[1])/100 + btallhit*(100-psvpc[0])*(100-psvpc[1])/10000;
-	
+
 	// Misc Display
 	if (bonusdata[313]) {
 		mobbasexp = Math.floor(monsterdata[mnum][13] * (100 + bonusdata[313]) / 100);
@@ -727,7 +728,7 @@ function bbtshow() {
 	else {
 		mobbasexp = monsterdata[mnum][13];
 		mobjobexp = monsterdata[mnum][14];
-		MobExp.innerHTML = mobbasexp + '/' + mobjobexp;		
+		MobExp.innerHTML = mobbasexp + '/' + mobjobexp;
 	}
 
 	// Battle Display
@@ -751,7 +752,7 @@ function bbtshow() {
 		BattlePassivePercent.innerHTML = psvpc[0] + '%';
 		PassiveName.innerHTML = '';
 		DoubleName.innerHTML = 'Dbl Atk';
-	}	
+	}
 	if (psvpc[1]) {
 		BattlePassiveName.innerHTML = 'Raging Trifecta Blow';
 		BattlePassivePercent.innerHTML = psvpc[1] + '%';
@@ -793,7 +794,7 @@ function bbtshow() {
 
 	if (btmaxatk != btminatk) NomalAttack.innerHTML = btminatk + '-' + btmaxatk;
 	else NomalAttack.innerHTML = btmaxatk;
-	
+
 	if (psvpc[0]) {
 		tmp1 = btminatk*2+btminatk_l;
 		tmp2 = btmaxatk*2+btmaxatk_l;
@@ -838,11 +839,11 @@ function bbtshow() {
 
 	NecessaryItemR.innerHTML = ncsir;
 	NecessaryItemNR.innerHTML = ncsinr;
-	
+
 	// Character specific
 	critical = (chrluk * 3 / 10 + 1 + bonusdata[22] + bonusdata[76+mobprop] + bonusdata[86+mobrace] + bonusdata[96+mobscale]) * (1 + bonusdata[23] / 100);
 	ChrCritical.innerHTML = critical;
-	
+
 	if (expcng) expcalc();
 	if (asrtcng) asallcalc();
 	if (easrtcng) easallcalc();
@@ -909,7 +910,7 @@ function bbtcalc() {
 	// Range defense
 	if (monsterdata[mnum][1] >= 4) rangeguard = Math.min(bonusdata[121],100);
 	else rangeguard = 0;
-	
+
 	// Other defense
 	if (monsterdata[mnum][19] == 2) tempguard += Math.min(bonusdata[122],100);
 	if (bonusdata[128] && monsterdata[mnum][19] != 2 && monsterdata[mnum][19] != 3) tempguard += bonusdata[128];
@@ -934,12 +935,12 @@ function bbtcalc() {
 	}
 	if(bbdebug) DebugText.innerHTML += "Combat Crit Atk [Right] = "+btmincriatk+" ~ "+btmaxcriatk+"<br>";
 
-	// Min attack variable	
+	// Min attack variable
 	btbminatk = Math.floor((minatk - baseatk) * scalecong/100) + baseatk;
 	if (itemdata[eq[5]][1] == 12 || itemdata[eq[5]][1] == 14 || itemdata[eq[5]][1] == 16 || itemdata[eq[5]][1] == 20) btminatk_l = Math.floor((minatk_l - baseatk) * scalecong_l/100) + baseatk;
 	else btminatk_l = 0;
 
-	
+
 	// Max attack variable
 	if (itemdata[eq[4]][1] == 24 || (itemdata[eq[4]][1] >= 32 && itemdata[eq[4]][1] <= 36)) {
 		if (Math.floor((maxatk - baseatk - bonusdata[26]) * scalecong/100) != Math.floor((minatk - baseatk) * scalecong/100)) btbmaxatk = Math.floor((maxatk - baseatk - 2) * scalecong/100) + baseatk;
@@ -959,7 +960,7 @@ function bbtcalc() {
 
 	if(bbdebug) DebugText.innerHTML += "Combat Atk [Right][Before] = "+btbminatk+" ~ "+btbmaxatk+"<br>";
 	if(bbdebug) DebugText.innerHTML += "Combat Atk [Left][Before] = "+btminatk_l+" ~ "+btmaxatk_l+"<br>";
-	
+
 	// Basic Attack power
 	btbminatk += minbonusatk;
 	btminatk_l += minbonusatk_l;
@@ -970,7 +971,7 @@ function bbtcalc() {
 	btbbmaxatk = btbmaxatk;
 	btbbminatk_l = btminatk_l;
 	btbbmaxatk_l = btmaxatk_l;
-	
+
 	if(bbdebug) DebugText.innerHTML += "Combat Atk [Right][After] = "+btbbminatk+" ~ "+btbbmaxatk+"<br>";
 	if(bbdebug) DebugText.innerHTML += "Combat Atk [Left][After] = "+btminatk_l+" ~ "+btmaxatk_l+"<br>";
 	if(bbdebug) DebugText.innerHTML += "Bonus Atk [Right] = "+minbonusatk+" ~ "+maxbonusatk+"<br>";
@@ -1015,7 +1016,7 @@ function bbtcalc() {
 	}
 	else if (job%13 == 7) {
 		btminatk = Math.floor(btbminatk * (1 - mobdef/150)) - mobmaxvd + bonusdata[29] + bonusdata[30];
-		btmaxatk = Math.floor(btbmaxatk * (1 - mobdef/150)) - mobminvd + bonusdata[29] + bonusdata[30];	
+		btmaxatk = Math.floor(btbmaxatk * (1 - mobdef/150)) - mobminvd + bonusdata[29] + bonusdata[30];
 	}
 	else {
 		btminatk = Math.floor(btbminatk * (1 - mobdef/100)) - mobmaxvd + bonusdata[29] + bonusdata[30];
@@ -1023,14 +1024,14 @@ function bbtcalc() {
 	}
 	if(bbdebug) DebugText.innerHTML += "Combat Atk [Right][Reduction] = "+btminatk+" ~ "+btmaxatk+"<br>";
 	if(bbdebug) DebugText.innerHTML += "Combat Crit Atk [Right][Reduction]  = "+btmincriatk+" ~ "+btmaxcriatk+"<br>";
-	
+
 
 	// Assassin follow-up damage
 	if (itemdata[eq[4]][1] == 15) {
 		btaveatk_l = 0;
 		if (support[115]) for (i=btminatk; i<=btmaxatk; i++) btaveatk_l += (Math.floor(Math.floor(Math.floor(Math.floor(Math.max(i, bonusdata[30] +1) * addatk/100 + bonusdata[31]) * addatkc/1000000) * radd/100) * (1 + 2 * Math.max(skilllv[201],skilllv[2644]))/100)) + Math.floor(Math.floor(Math.floor(Math.floor(Math.floor(Math.max(i, bonusdata[30] +1) * pcong[mobproplv-1][5][mobprop]/100 + bonusdata[31]) * addatkc/1000000) * radd/100) * (1 + 2 * Math.max(skilllv[201],skilllv[2644]))/100) * 25/100);
 		else for (i=btminatk; i<=btmaxatk; i++) btaveatk_l += Math.floor(Math.floor(Math.floor(Math.floor(Math.max(i, bonusdata[30] +1) * addatk/100 + bonusdata[31]) * addatkc/1000000) * radd/100) * (1 + 2 * Math.max(skilllv[201],skilllv[2644]))/100);
-		
+
 		btaveatk_l /= btmaxatk - btminatk + 1;
 	}
 	else if (itemdata[eq[5]][1] == 12 || itemdata[eq[5]][1] == 14 || itemdata[eq[5]][1] == 16 || itemdata[eq[5]][1] == 20) {
@@ -1061,7 +1062,7 @@ function bbtcalc() {
 	btminatk = Math.floor(Math.floor((Math.floor(Math.max(btminatk, 1+bonusdata[30]) * addatk/100) + bonusdata[31]) * addatkc/1000000) * radd/100);
 	star = Math.floor(Math.floor(bonusdata[31] * addatkc/1000000) * radd/100);
 	if(bbdebug) DebugText.innerHTML += "Combat Atk [Right][Bonuses] = "+btminatk+" ~ "+btmaxatk+"<br>Bonuses [Equip Ele] = "+addatk+"%<br>Bonuses [Etc Bonus] = "+addatkc/1000000+"<br>";
-	
+
 	if (support[115]) {
 		btmaxatk += Math.floor(Math.floor(Math.floor((Math.floor(Math.max(btmaxatk, 1+bonusdata[30]) * (pcong[mobproplv-1][5][mobprop])/100) + bonusdata[31]) * addatkc/1000000) * radd/100) * 25/100);
 		btminatk += Math.floor(Math.floor(Math.floor((Math.floor(Math.max(btminatk, 1+bonusdata[30]) * (pcong[mobproplv-1][5][mobprop])/100) + bonusdata[31]) * addatkc/1000000) * radd/100) * 25/100);
@@ -1091,7 +1092,7 @@ function bbtcalc() {
 		btaveatk_l = 0;
 		btavecriatk_l = 0;
 	}
-	
+
 	if (support[113] && monsterdata[mnum][19]!=1) {
 		btminatk = 0;
 		btmaxatk = 0;
@@ -1106,7 +1107,7 @@ function bbtcalc() {
 	else if (tmp == 0) psvpc[0] = 0;
 	if (skilllv[1165]) psvpc[1] = 30 - skilllv[1165];
 	else psvpc[1] = 0;
-	
+
 	if(support[146]) switch(support[146]) {
 		case 1: psvpc[1] *= 1.2; break;
 		case 2: psvpc[1] *= 1.5; break;
@@ -1208,7 +1209,7 @@ function bbtcalc() {
 		maxexp = 0;
 		btaveatk = 0;
 	}
-	
+
 	//Damage Inflcted
 	cutdmg = pcong[0][mobatkprop][bonusdata[4]] * (100 - bonusdata[101+mobatkprop]) * (100 - bonusdata[111+mobrace]) * (100 - bonusdata[125+mobscale]) * (100 - rangeguard) * (100 - tempguard);
 
@@ -1217,7 +1218,7 @@ function bbtcalc() {
 	else maxdmg = actcalc(mobmaxatk-1,100,0,0,0,1,4,0,10,0);
 	if (support[112]) {
 		mindmg = Math.ceil(mindmg/2);
-		maxdmg = Math.ceil(maxdmg/2);	
+		maxdmg = Math.ceil(maxdmg/2);
 	}
 	if (support[127]) {
 		mindmg *= 2;
@@ -1300,12 +1301,12 @@ function actcalc(a,b,c,d,e,f,g,h,i,j) {
 		aa = pcong[0][i][bonusdata[4]];
 		aa2 = (100 - bonusdata[101+i]) * (100 - bonusdata[111+mobrace]) * (100 - rangeguard);
 	}
-	
+
 	if (eq[4] == 1223 || eq[5] == 1223) icepick = 1;
 	else icepick = 0;
-	
+
 	j = (100+j)/100;
-		
+
 	if (g==0 && h==3) tmp = Math.floor(Math.floor(a * (c*d/100+b/100) * j) * (1 - mobdef/100)) - mobmaxvd;
 	else if (g==0 && icepick) tmp = Math.floor(Math.floor(a * (c*d/100+b/100) * j) * ((mobdef+mobmaxvd)/100)) + bonusdata[29] + bonusdata[30];
 	else if (g==0) tmp = Math.floor(Math.floor(a * (c*d/100+b/100) * j) * (1 - mobdef/100)) - mobmaxvd + bonusdata[29] + bonusdata[30];
@@ -1341,7 +1342,7 @@ function showallbtdata(n) {
 }
 
 // * Monster sub status functions
-function mobstatuscalc(l, m) {	
+function mobstatuscalc(l, m) {
 	clearTimeout(i0);
 
 	a = Math.max(Math.floor(l/25)-1,0);
@@ -1357,10 +1358,10 @@ function mobstatuscalc(l, m) {
 	} else if (l >= 212) {
 		a = 1;
 		b = 0;
-	} 
-	
+	}
+
 	if(m==0 && browserspc) {m++;}
-	
+
 	if (m == 1) {
 		if (keypressed==96) msupport[l] = 10;
 		else msupport[l]++;
@@ -1458,7 +1459,7 @@ function singleaslisting() {
 	JobActSkillTableL.innerHTML = tmp1[1];
 	JobActSkillTableR.innerHTML = tmp1[2];
 	tmp = '';
-	tmp1 = '';	
+	tmp1 = '';
 }
 function singleasdata(m) {
 	tmp3 = '';
@@ -1471,7 +1472,7 @@ function singleasdata(m) {
 			z = astabledata[m][2];
 		}
 		else z = ASLv;
-		
+
 		tmp3 += '<table width="100%" border="1" cellspacing="1" bordercolor="#D6D6D6" bgcolor="#FFFFFF" cellpadding="0"><tr><td colspan="2" class="white"><table width="100%" border="0" bordercolor="#D6D6D6"><tr class="index">';
 		if (astabledata[m][2] != 1) tmp3 += '<td>Lv</td>';
 		if (astabledata[m][3] == 1) tmp3 += '<td>Damage</td>';
@@ -1480,7 +1481,7 @@ function singleasdata(m) {
 		if (astabledata[m][6] != '') tmp3 += '<td>'+astabledata[m][6]+'</td>';
 		if (astabledata[m][7] != '') tmp3 += '<td>'+astabledata[m][7]+'</td>';
 		tmp3 += '</tr>';
-		for (ASLv;ASLv <= z; ASLv++) {	
+		for (ASLv;ASLv <= z; ASLv++) {
 			tmp3 += '<tr>';
 			if (astabledata[m][2] != 1) tmp3 += '<td class="gray">'+ASLv+'</td>';
 			if (astabledata[m][3] == 1) tmp3 += '<td class="data"><span id="ChrAct'+m+'-'+ASLv+'DM'+'"></span></td>';
@@ -1493,12 +1494,12 @@ function singleasdata(m) {
 		tmp3 += '</table><table border="0"><tr>';
 		if (astabledata[m][4] == 1) tmp3 += '<td class="gray">CT</td><td class="data"><span id="ChrAct'+m+'-CT"></span></td>';
 		if (astabledata[m][5] == 1) tmp3 += '<td class="gray">DT</td><td class="data"><span id="ChrAct'+m+'-DT"></span></td>';
-		tmp3 += '</tr></table></td></tr></table>';	
-	
+		tmp3 += '</tr></table></td></tr></table>';
+
 		ASLv = tmp4;
-		
+
 		if(assaved[0]!=0) {
-			for (i=1; i<=assaved[0]*2-1;i+=2) 
+			for (i=1; i<=assaved[0]*2-1;i+=2)
 			if (assaved[i] == m){
 				if (assaved[i+1] != ASLv) assaved[i+1] = ASLv;
 				i=1000;
@@ -1507,15 +1508,15 @@ function singleasdata(m) {
 				assaved[0]++;
 				assaved[assaved[0]*2-1] = m;
 				assaved[assaved[0]*2] = ASLv;
-			} 
+			}
 		}
 		else {
 			assaved[0]++;
 			assaved[assaved[0]*2-1] = m;
 			assaved[assaved[0]*2] = ASLv;
 		}
-		
-		document.getElementById('Single'+m).innerHTML = tmp3;	
+
+		document.getElementById('Single'+m).innerHTML = tmp3;
 		aspartcalc(m, ASLv, tmp4);
 	}
 	else {
@@ -1525,7 +1526,7 @@ function singleasdata(m) {
 			if (assaved[i] == m) {
 				for (z=i+2; z<=assaved[0]*2-1;z+=2) {
 					tmp3[z-2] = assaved[z];
-					tmp3[z-1] = assaved[z+1];					
+					tmp3[z-1] = assaved[z+1];
 				}
 				tmp3[0]--;
 				i=1000;
@@ -1544,7 +1545,7 @@ function asrtonoff(){
 	asrtcng = asrtcng%2;
 
 	if (asrtcng) {
-		ASRealTime.innerHTML = '<font color="#CD5C5C">On</font><br>• When processing becomes heavy, please turn automatic function to OFF.';
+		ASRealTime.innerHTML = '<font color="#CD5C5C">On</font><br>&#8226; When processing becomes heavy, please turn automatic function to OFF.';
 		asallcalc();
 	}
 	else ASRealTime.innerHTML = '<font color="#AAAAAA">Off</font><br><a href="#" onClick="asallcalc();return false">Re-Calculate</a>';
@@ -1553,7 +1554,7 @@ function asallcalc() {
 	if (assaved[0]) for (j=2; j<=assaved[0]*2; j+=2) {
 		if (assaved[j] == -2) for (k=1; k<=astabledata[assaved[j-1]][2]; k++) ascalc(assaved[j-1], k, 0);
 		else ascalc(assaved[j-1], assaved[j], 0);
-			
+
 		if (astabledata[assaved[j-1]][4]==1) document.getElementById('ChrAct'+assaved[j-1]+'-CT').innerHTML = Math.ceil(asctdata[assaved[j-1]]*ctmagn);
 		if (astabledata[assaved[j-1]][5]==1) document.getElementById('ChrAct'+assaved[j-1]+'-DT').innerHTML = Math.ceil(asdtdata[assaved[j-1]]*dtmagn);
 		if (assaved[j-1]==67) {
@@ -1573,8 +1574,8 @@ function asallcalc() {
 }
 function aspartcalc(m, n, o) {
 	if (o == -2) for (k=1; k<=astabledata[m][2]; k++) ascalc(m, k, 0);
-	else ascalc(m, n, 0);	
-		
+	else ascalc(m, n, 0);
+
 	if (astabledata[m][4]==1) document.getElementById('ChrAct'+m+'-CT').innerHTML = Math.ceil(asctdata[m]*ctmagn);
 	if (astabledata[m][5]==1) document.getElementById('ChrAct'+m+'-DT').innerHTML = Math.ceil(asdtdata[m]*dtmagn);
 	if (m==67) {
@@ -1620,7 +1621,7 @@ function eastablelisting() {
 					tmp += '</table><table border="0"><tr>';
 					if (astabledata[itemdata[eq[i]][25+y]][4] == 1) tmp += '<td class="gray">CT</td><td class="data"><span id="EqAct'+itemdata[eq[i]][25+y]+'-CT"></span></td>';
 					if (astabledata[itemdata[eq[i]][25+y]][5] == 1) tmp += '<td class="gray">DT</td><td class="data"><span id="EqAct'+itemdata[eq[i]][25+y]+'-DT"></span></td>';
-					tmp += '</tr></table></td></tr></table>';					
+					tmp += '</tr></table></td></tr></table>';
 				}
 			}
 			for(l=0; l<=k[i]; l++) {
@@ -1647,7 +1648,7 @@ function eastablelisting() {
 						if (astabledata[itemdata[slot[i][l]][25+y]][5] == 1) tmp += '<td class="gray">DT</td><td class="data"><span id="EqAct'+itemdata[slot[i][l]][25+y]+'-DT"></span></td>';
 						tmp += '</tr></table></td></tr></table>';
 					}
-				}	
+				}
 			}
 		}
 	}
@@ -1661,7 +1662,7 @@ function easrtonoff(){
 	easrtcng = easrtcng%2;
 
 	if (easrtcng) {
-		EASRealTime.innerHTML = '<font color="#CD5C5C">On</font><br>• When processing becomes heavy, please turn automatic function to OFF.';
+		EASRealTime.innerHTML = '<font color="#CD5C5C">On</font><br>&#8226; When processing becomes heavy, please turn automatic function to OFF.';
 		easallcalc();
 	}
 	else EASRealTime.innerHTML = '<font color="#AAAAAA">Off</font><br><a href="#" onClick="easallcalc();return false">Re-Calculate</a>';
@@ -1673,7 +1674,7 @@ function easallcalc() {
 			if (itemdata[eq[i]][25]) {
 				for (j=1; j<=itemdata[eq[i]][25]*2; j+=2) {
 					ascalc(itemdata[eq[i]][25+j], itemdata[eq[i]][25+j+1], 1);
-					
+
 					if (astabledata[itemdata[eq[i]][25+j]][4]==1) document.getElementById('EqAct'+itemdata[eq[i]][25+j]+'-CT').innerHTML = Math.ceil(asctdata[itemdata[eq[i]][25+j]]*ctmagn);
 					if (astabledata[itemdata[eq[i]][25+j]][5]==1) document.getElementById('EqAct'+itemdata[eq[i]][25+j]+'-DT').innerHTML = Math.ceil(asdtdata[itemdata[eq[i]][25+j]]*dtmagn);
 				}
@@ -1682,7 +1683,7 @@ function easallcalc() {
 				if (itemdata[slot[i][l]][25]) {
 					for(z=1; z<=(itemdata[slot[i][l]][25]*2); z+=2) {
 						ascalc(itemdata[slot[i][l]][25+z], itemdata[slot[i][l]][25+z+1], 1);
-						
+
 						if (astabledata[itemdata[slot[i][l]][25+z]][4]==1) document.getElementById('EqAct'+itemdata[slot[i][l]][25+z]+'-CT').innerHTML = Math.ceil(asctdata[itemdata[slot[i][l]][25+z]]*ctmagn);
 						if (astabledata[itemdata[slot[i][l]][25+z]][5]==1) document.getElementById('EqAct'+itemdata[slot[i][l]][25+z]+'-DT').innerHTML = Math.ceil(asdtdata[itemdata[slot[i][l]][25+z]]*dtmagn);
 					}
@@ -1700,10 +1701,10 @@ function ascalc(n, k, m) {
 	tmp4 = 0;
 	tmp5 = 0;
 	tmp6 = 0;
-	
+
 	if (m) tmp7 = 'EqAct';
 	else tmp7 = 'ChrAct';
-	
+
 	// Attack Skill Hit
 	if (n==0 || n==23) ashit = Math.min(Math.floor(bthit*(1+5*k/100)),100);
 	else if (n==27) ashit = Math.max(Math.min((hit + 100 - mobflee), 100), 5);
@@ -1725,11 +1726,11 @@ function ascalc(n, k, m) {
 	if (n==52) ash *= Math.ceil((k+4)/3);
 
 	aba = asdata[n][1]+bonusdata[36];
-	
-	
+
+
 	aminatk = btbbminatk;
 	amaxatk = btbbmaxatk;
-	
+
 	if (n==96 || n==97 || n==136) {
 		if (Math.floor(((maxatk+bonusdata[40]) - baseatk - bonusdata[40]) * scalecong/100) != Math.floor((minatk - baseatk) * scalecong/100)) amaxatk = Math.floor(((maxatk+bonusdata[40]) - baseatk - 2) * scalecong/100) + baseatk;
 		else amaxatk = Math.floor(((maxatk+bonusdata[40]) - baseatk -1) * scalecong/100) + baseatk;
@@ -1801,7 +1802,7 @@ function ascalc(n, k, m) {
 			tmp1 = Math.floor(Math.floor((Math.floor((btbminatk+bonusdata[29]+bonusdata[30])*addatk/100)+bonusdata[31])*(addatkc)/1000000)*radd/100);
 			tmp2 = Math.floor(Math.floor((Math.floor((btbmaxatk+bonusdata[29]+bonusdata[30])*addatk/100)+bonusdata[31])*(addatkc)/1000000)*radd/100);
 		}
-		else if (n==76) {			
+		else if (n==76) {
 			strbon = 0;
 			for(z=1;z<=(chrstr/10);z++) strbon += 5+(z-1)*10;
 			//[(weaponweight*0.8*skillmod)+strbonus+weaponupgrades]*damagemodifiers*5
@@ -1837,7 +1838,7 @@ function ascalc(n, k, m) {
 		else if (n==96) {
 			tmp1 = actcalc(aminatk,aba,asdata[n][2],k,asdata[n][5],ash,0,3,asdata[n][6],asbonusdata[n]) + k*4;
 			tmp2 = actcalc(amaxatk,aba,asdata[n][2],k,asdata[n][5],ash,1,3,asdata[n][6],asbonusdata[n]) + k*4 + skilllv[281]*3;
-	
+
 		}
 		else if (n==97) {
 			tmp1 = actcalc(aminatk,aba,asdata[n][2],k,asdata[n][5],ash,6,3,bonusdata[41],asbonusdata[n]);
@@ -1853,7 +1854,7 @@ function ascalc(n, k, m) {
 		}}
 		else if (n==131){ if (monsterdata[mnum][20] == 2 || monsterdata[mnum][20] == 4) {
 			tmp1 = actcalc(aminatk,aba,asdata[n][2]+chrstr,k,asdata[n][5],ash,0,1,asdata[n][6],asbonusdata[n]);
-			tmp2 = actcalc(amaxatk,aba,asdata[n][2]+chrstr,k,asdata[n][5],ash,1,1,asdata[n][6],asbonusdata[n]);	
+			tmp2 = actcalc(amaxatk,aba,asdata[n][2]+chrstr,k,asdata[n][5],ash,1,1,asdata[n][6],asbonusdata[n]);
 		}}
 		else if (n==136) {
 			tmp1 = actcalc(aminatk,aba,asdata[n][2],k,asdata[n][5],ash,8,1,asdata[n][6],asbonusdata[n]);
@@ -1863,12 +1864,12 @@ function ascalc(n, k, m) {
 			tmp1 = actcalc(aminatk,aba,asdata[n][2],k,asdata[n][5],ash,0,1,asdata[n][6],asbonusdata[n]);
 			tmp2 = actcalc(amaxatk,aba,asdata[n][2],k,asdata[n][5],ash,1,1,asdata[n][6],asbonusdata[n]);
 		}
-		
+
 		if (n==19) {
 			tmp1 = Math.floor(tmp1*(pcong[mobproplv-1][0][mobprop]/100) * ((100+(cartweight/80))/100));
-			tmp2 = Math.floor(tmp2*(pcong[mobproplv-1][0][mobprop]/100) * ((100+(cartweight/80))/100));		
+			tmp2 = Math.floor(tmp2*(pcong[mobproplv-1][0][mobprop]/100) * ((100+(cartweight/80))/100));
 		}
-		
+
 		tmp5 = Math.round((btmincriatk+btmaxcriatk) * ascri/2 + (tmp1+tmp2)*ashit/2 * (1-ascri/100) + Math.floor(Math.floor((Math.floor(skilllv[694]*2*addatk/100)+bonusdata[31])*addatkc/1000000)*radd/100)*(100-ashit))/100;
 		if (n==27) {
 			tmp4 = Math.ceil((recharge+250)/mobrecharge);
@@ -1945,7 +1946,7 @@ function ascalc(n, k, m) {
 			tmp5 = (tmp1+tmp2)/2;
 		}
 	}
-		
+
 	// If Magic
 	if (asdata[n][0]==1) {
 		tmp1 = actcalc(minmatk,asdata[n][1],asdata[n][2],k,asdata[n][5],ash,2,1,asdata[n][6],asbonusdata[n]);
@@ -2096,36 +2097,36 @@ function ascalc(n, k, m) {
 		tmp2 = k * Math.floor((0.7*chrint*chrint*mobmaxvd)/(chrint+mobmaxvd)) ;
 		tmp5 = Math.round((tmp1+tmp2)*50)/100;
 	}
-	
+
 	if (n==119) {
 		tmp1 += k*50;
 		tmp2 += k*50;
 	}
-	
+
 	if ((msupport[127] || msupport[65]) && n==66) {
 		tmp1 *= 2;
 		tmp2 *= 2;
 		tmp5 *= 2;
 	}
-	
+
 	if (n==106 && support[168]) {
 		tmp1 = Math.floor(tmp1 * 1.2);
 		tmp2 = Math.floor(tmp2 * 1.2);
 		tmp5 = tmp5 * 1.2;
 	}
-	
+
 	// Equip/Skill Checks
-	if ((itemdata[eq[4]][1] != 24 && (n==12 || n==13 || n==82)) || 
-		(itemdata[eq[4]][1] != 18 && itemdata[eq[4]][1] != 19 && (n==23 || n==24 || n==25 || n==26 || n==76)) || 
-		(!support[85] && n==24) || 
-		(itemdata[eq[4]][1] != 15 && (n==54 || n==55) && !m) || 
-		(itemdata[eq[5]][1] != 0 && itemdata[eq[5]][2] && (n==58 || n==59 || n==132)) || 
+	if ((itemdata[eq[4]][1] != 24 && (n==12 || n==13 || n==82)) ||
+		(itemdata[eq[4]][1] != 18 && itemdata[eq[4]][1] != 19 && (n==23 || n==24 || n==25 || n==26 || n==76)) ||
+		(!support[85] && n==24) ||
+		(itemdata[eq[4]][1] != 15 && (n==54 || n==55) && !m) ||
+		(itemdata[eq[5]][1] != 0 && itemdata[eq[5]][2] && (n==58 || n==59 || n==132)) ||
 		(itemdata[eq[4]][1] != 27 && itemdata[eq[4]][1] != 28 && (n==62 || n==87))||
 		(!support[97] && n==88) ||
-		(itemdata[eq[10]][1] != 29 && (n==96)) || 
-		(itemdata[eq[10]][1] != 30 && (n==97)) || 
-		(itemdata[eq[4]][1] != 31 && (n==98)) || 
-		(itemdata[eq[4]][1] != 32 && (n==112 || n==113)) || 
+		(itemdata[eq[10]][1] != 29 && (n==96)) ||
+		(itemdata[eq[10]][1] != 30 && (n==97)) ||
+		(itemdata[eq[4]][1] != 31 && (n==98)) ||
+		(itemdata[eq[4]][1] != 32 && (n==112 || n==113)) ||
 		(itemdata[eq[4]][1] != 32 && itemdata[eq[4]][1] != 33 && (n==114 || n==115)) ||
 		(itemdata[eq[4]][1] != 34 && (n==116 || n==117 || n==118)) ||
 		(itemdata[eq[4]][1] != 35 && (n==119)) ||
@@ -2150,15 +2151,15 @@ function ascalc(n, k, m) {
 	}
 	if (n==76 && k != 5) document.getElementById(tmp7+n+'-'+k+'CT').innerHTML = asctdata[n][k-1];
 	else if (astabledata[n][4]==2) document.getElementById(tmp7+n+'-'+k+'CT').innerHTML = Math.ceil(asctdata[n][k-1]*ctmagn);
-	
+
 	if (astabledata[n][5]==2) document.getElementById(tmp7+n+'-'+k+'DT').innerHTML = Math.ceil(asdtdata[n][k-1]*dtmagn);
-	
+
 	if (n==56) {
 		if (mobprop==5) {
 			bonusdata[36] += 30*k;
 			bbtcalc();
 			bonusdata[36] -= 30*k;
-	
+
 			if (btmincriatk==btmaxcriatk) {
 				if (maxaddatk) document.getElementById(tmp7+'56-'+k+'DM').innerHTML = 'Normal: ' + btminatk + ' - ' + btmaxatk + '+' + btminatk_l + ' - ' + btmaxatk_l + '<br>Cri: ' + btmaxcriatk + '+' + maxaddatk + '<br>(' + Math.round(btaveatk*100)/100 + ')';
 				else if (btmaxatk_l) document.getElementById(tmp7+'56-'+k+'DM').innerHTML = 'Normal: ' + btminatk + ' - ' + btmaxatk + '+' + btminatk_l + ' - ' + btmaxatk_l + '<br>Cri: ' + btmaxcriatk + '<br>(' + Math.round(btaveatk*100)/100 + ')';
@@ -2172,16 +2173,16 @@ function ascalc(n, k, m) {
 		}
 		else document.getElementById(tmp7+'56-'+k+'DM').innerHTML = ' - ';
 	}
-	
+
 	if (n==84) {
 		document.getElementById(tmp7+n+'-'+k+'DM').innerHTML = tmp1+' - '+tmp2 + ' ('+ tmp5 +')<br>['+tmp3+' - '+tmp4+']';
 	}
-	
+
 	if (n==102) {
 		document.getElementById(tmp7+'102-'+k+'DM').innerHTML = 'N: ' + tmp1 + ' - ' + tmp2 + '<br>C: ' + tmp3 + ' - ' + tmp4 + '<br>(' + tmp5 + ')';
 		document.getElementById(tmp7+'102-'+k+'-1').innerHTML = (chrluk * 3 / 10 + 1 + bonusdata[22] + 25 + k*5 + bonusdata[76+mobprop] + bonusdata[86+mobrace] + bonusdata[96+mobscale]) * (1 + bonusdata[23] / 100) + '%';
 	}
-	
+
 	// Requirement Errors
 	if (itemdata[eq[4]][1] != 24 && (n==12 || n==13 || n==82)) document.getElementById(tmp7+n+'-'+k+'DM').innerHTML = 'Requires a Bow';
 	else if (itemdata[eq[4]][1] != 18 && itemdata[eq[4]][1] != 19 && (n==23 || n==24 || n==25 || n==26 || n==76))
@@ -2208,9 +2209,9 @@ function ascalc(n, k, m) {
 		document.getElementById(tmp7+n+'-'+k+'DM').innerHTML = 'Requires a Shotgun';
 	else if (itemdata[eq[4]][1] != 35 && (n==119))
 		document.getElementById(tmp7+n+'-'+k+'DM').innerHTML = 'Requires a Grenade Launcher';
-	else if ((itemdata[eq[4]][1] < 32 || itemdata[eq[4]][1] > 36) && (n==120 || n==121 || n==122 || n==123)) 
+	else if ((itemdata[eq[4]][1] < 32 || itemdata[eq[4]][1] > 36) && (n==120 || n==121 || n==122 || n==123))
 		document.getElementById(tmp7+n+'-'+k+'DM').innerHTML = 'Requires a Gun';
-		
+
 
 	// Status EFfects
 	if (n==0) {
@@ -2399,7 +2400,7 @@ function ascalc(n, k, m) {
 	}
 	else if (n==121) {
 		if (monsterdata[mnum][19]==1) tmp1 = 0;
-		else { 
+		else {
 			tmp1 = badst(30,mobvit,0);
 			tmp2 = badst(60,mobvit,0);
 		}
@@ -2489,10 +2490,10 @@ function expsort(n) {
 		tmp += '<tr><td class="gray">Rank '+(i+1)+'</td><td><a href="#" onClick="showallbtdata('+ sorted[i] +'); return false;">' + monsterdata[sorted[i]][0] + '</a></td><td class="data">' + exptmp[i]/100 + '</td><td class="data">' + alldmgtmp[i]/100 + '</td></tr>';
 	}
 	else {
-		tmp1 = '<br>• Those whose efficiency per sec close to 0 were disregarded.';
+		tmp1 = '<br>&#8226; Those whose efficiency per sec close to 0 were disregarded.';
 		break;
 	}
-	tmp += '</table>• This feature does not recalculate due to modifications.<br>  When it renews, please do it <a href="#" onClick="expsort('+n+'); return false;">again</a> to indicate the new values.' + tmp1;
+	tmp += '</table>&#8226; This feature does not recalculate due to modifications.<br>  When it renews, please do it <a href="#" onClick="expsort('+n+'); return false;">again</a> to indicate the new values.' + tmp1;
 	ExpSorted.innerHTML = tmp;
 	tmp = '';
 	tmp1 = '';
@@ -2521,7 +2522,7 @@ function expcalconoff(){
 	expcng = expcng%2;
 
 	if (expcng) {
-		EXPRealTime.innerHTML = '<font color="#CD5C5C">On</font><br>• Please turn off when not in use';
+		EXPRealTime.innerHTML = '<font color="#CD5C5C">On</font><br>&#8226; Please turn off when not in use';
 		expcalc();
 	}
 	else EXPRealTime.innerHTML = '<font color="#AAAAAA">Off</font>';
@@ -2533,36 +2534,36 @@ function expcalc() {
 		mnum = eval(document.frm.mnum.value);
 		gain = 0;
 		killN = 0;
-		
+
 		// Calculate Base EXP %
-		gain = mobbasexp / exptables[z][blv];	
+		gain = mobbasexp / exptables[z][blv];
 		gain = Math.round(gain * 10000)/100;
 		if (gain >= 100)
 			gain=100;
 		BGain.innerHTML = gain + '%';
-		
+
 		// Calculate the Number of kills needed to lvl
 		killN = Math.round(100 / gain);
 		BKillsN.innerHTML = killN;
-		
+
 		// Exo per Sec
 		BExpSec.innerHTML = Math.min(Math.round(baseeff * 100)/100, mobbasexp);
-		
+
 		// Time to level in hrs, min, sec
 		sec = 0;
 		min = 0;
 		hrs = 0;
 		BEstTime.innerHTML = '';
-		sec = Math.round(exptables[z][blv] / Math.min(Math.round(baseeff * 100)/100, mobbasexp));	
+		sec = Math.round(exptables[z][blv] / Math.min(Math.round(baseeff * 100)/100, mobbasexp));
 		if (sec>60) {
 			min = Math.floor(sec / 60);
 				sec -= (min * 60);
-		}	
+		}
 		if (min>60) {
 			hrs = Math.floor(min / 60);
 		//	while(min >= 60)
-				min -= (hrs * 60);	
-		}	
+				min -= (hrs * 60);
+		}
 		if (hrs > 0)
 			BEstTime.innerHTML += hrs + 'hrs ';
 		if (min > 0)
@@ -2576,23 +2577,23 @@ function expcalc() {
 		BExpSec.innerHTML = '<center>-</center>';
 		BEstTime.innerHTML = '<center>-</center>';
 	}
-	
+
 	// Job EXP Calc
 	z=0;
-	if (job == 0) { 
+	if (job == 0) {
 		if (!AdvOn) z=1;
 		else z=5;
 	}
-	else if (job <= 7) { 
-		if (!AdvOn) z=2; 
+	else if (job <= 7) {
+		if (!AdvOn) z=2;
 		else z=6;
 	}
 	else if (job >= 8 && job <= 13) z=9;
 	else if (job >= 14 && job < 40) z=3;
 	else if (job == 66) z=8;
 	else z=7;
-	
-	
+
+
 	if (jlv == 10 && job == 0) {
 		JGain.innerHTML = '<center>-</center>';
 		JKillsN.innerHTML = '<center>-</center>';
@@ -2611,32 +2612,32 @@ function expcalc() {
 		if (gain >= 100)
 			gain=100;
 		JGain.innerHTML = gain + '%';
-		
+
 		// Calculate the Number of kills needed to lvl
 		killN = Math.round(100 / gain);
 		JKillsN.innerHTML = killN;
-		
+
 		// Exo per Sec
 		JExpSec.innerHTML = Math.min(Math.round(jobeff * 100)/100, mobjobexp);
-		
+
 		// Time to level in hrs, min, sec
 		sec = 0;
 		min = 0;
 		hrs = 0;
 		JEstTime.innerHTML = '';
-		
+
 		sec = Math.round(exptables[z][jlv] / Math.min(Math.round(jobeff * 100)/100, mobjobexp));
-		
+
 		if (sec>60) {
 			min = Math.floor(sec / 60);
 				sec -= (min * 60);
-		}	
+		}
 		if (min>60) {
 			hrs = Math.floor(min / 60);
 		//	while(min >= 60)
 				min -= (hrs * 60);
 		}
-		
+
 		if (hrs > 0)
 			JEstTime.innerHTML += hrs + 'hrs ';
 		if (min > 0)
@@ -2644,7 +2645,7 @@ function expcalc() {
 		if (sec > 0)
 			JEstTime.innerHTML += sec + 'sec';
 	}
-	
+
 	// Base Percentage
 	currentbexp = 0;
 	currentbper = 0;
@@ -2653,14 +2654,14 @@ function expcalc() {
 	z=0;
 	if (AdvOn) z=4;
 	for(tmp = 0; tmp < blv; tmp++) currentbexp += exptables[z][tmp];
-	
+
 	if (!AdvOn) currentbper = currentbexp / 405234428;
 	else currentbper = currentbexp / 1209282555;
 	currentbper = Math.round(currentbper * 10000) / 100;
-	
+
 	if (!AdvOn) PercBase.innerHTML = currentbper + '%<br>(' + (405234428 - currentbexp) + ' left)';
 	else PercBase.innerHTML = currentbper + '%<br>(' + (1209282555 - currentbexp) + ' left)';
-	
+
 	// Job Percentage
 	if (job == 0) {
 		if (!AdvOn) {

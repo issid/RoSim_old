@@ -1,8 +1,8 @@
 skilldata = new Array(2800);
 skilldesc = new Array(2800);
 skillcopy = new Array(2800);
-for (i = 0; i <= 2800; i++)  { 	skilldata[i] = new Array('', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0); 
-				skilldesc[i] = new Array('','', 0, 0, 0, 0); 
+for (i = 0; i <= 2800; i++)  { 	skilldata[i] = new Array('', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				skilldesc[i] = new Array('','', 0, 0, 0, 0);
 				skillcopy[i] = 0; }
 
 // 1080 - old skill size
@@ -24,11 +24,11 @@ Type 0: Passive, 1: Assistance [non-Attack], 2: Attack, 3: Recover [Healing], 4:
 ******************************/
 
 /* Skill Desctription Array ******************
-0: Skill Description, 1: Notes, 2: Use, 3: Skill Effects, 4: Effect List Rows, 5: Total Number of Colums [excluding lvl column], 
+0: Skill Description, 1: Notes, 2: Use, 3: Skill Effects, 4: Effect List Rows, 5: Total Number of Colums [excluding lvl column],
  6 + [4]: Column TItles, ...
 
 Use :		 	0: User, 1: Allies, 2: Party Member, 3: Ground, 4: Enemy
-Skill Effects		0: None, 1: Yes	
+Skill Effects		0: None, 1: Yes
 *****************************/
 // No Column
 //skilldesc[0] = new Array('Description', 'Notes', 0, 0, 0, 0);
@@ -497,10 +497,10 @@ skilldesc[341] = new Array('Consume 2 coins to activate the Gunslinger\'s Panic 
 skilldata[342] = new Array('Bull\'s Eye', 1, 0, 2, 327, 334, 0, 0, 0, 10, 5, 0, 0, 0, 123);
 skilldesc[342] = new Array('Consume 1 coin to inflict 500% damage to Demihuman and Brute monsters.', 'Bull\'s Eye has a 0.1% chance to inflict the Coma effect (brought to 1 hp, 1 sp) on all enemies except Boss monsters. Consumes 30 SP, 1 coin, and 1 bullet.', 4, 0, 0, 0);
 
-// 10) 
-// 11) 
-// 12) 
-// 13) 
+// 10)
+// 11)
+// 12)
+// 13)
 // 14) Knight
 skilldata[521] = new Array('Spear Mastery', 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 skilldesc[521] = new Array('Increase the damage of spears by +4 per skill level, with an additional +1 if the knight is riding a Peco Peco.', ' - ', 0, 1, 10, 2, 'Attack Strength Added by lvl', 'Attack Strength Added by lvl<br>(on Peco Peco)'
@@ -928,10 +928,10 @@ skilldesc[778] = new Array('Awaken the caster\'s hidden potential for 10 minutes
 
 // 21) Ninja
 // 22) Gunslinger
-// 23) 
-// 24) 
-// 25) 
-// 26) 
+// 23)
+// 24)
+// 25)
+// 26)
 // 27) Crusader
 skilldata[1041] = new Array('Divine Protection', 10, 0, 0, 1044, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0);
 skilldesc[1041] = skilldesc[121];
@@ -1458,10 +1458,10 @@ skilldesc[1307] = new Array('ne blast inflicts an amount of damage that is calcu
 
 // 34) Ninja
 // 35) Gunslinger
-// 36) 
-// 37) 
-// 38) 
-// 39) 
+// 36)
+// 37)
+// 38)
+// 39)
 // 40) Lord Knight
 skilldata[1561] = new Array('Aura Blade', 5, 0, 1, 2, 4, 6, 0, 0, 5, 5, 5, 0, 0, 0);
 skilldesc[1561] = new Array('Enchant weapon with an aura that will add more damage.', 'This additional damage is not affected by casters accuracy or targets defense [hits no matter what]. Despite its name, it works with spears as well.', 0, 1, 5, 3, 'Damage Bonus', 'Duration', 'SP Used'
@@ -1604,10 +1604,10 @@ skilldesc[1765] = new Array('Enchant deadly poison to enhance a weapons damage. 
 // 46) Taekwon
 // 47) Ninja
 // 48) Gunslinger
-// 49) 
-// 50) 
-// 51) 
-// 52) 
+// 49)
+// 50)
+// 51)
+// 52)
 // 53) Paladin
 skilldata[2081] = new Array('Gloria Domini', 5, 0, 2, 7, 1048, 1050, 0, 0, 5, 5, 2, 0, 0, 87);
 skilldesc[2081] = new Array('Summon a grand crucifix to crush enemies.', 'Damage inflicted by this skill is not affected by defense or attack strength, but does a consistent amount of damage determined by skill level. Gloria Domini cannot be canceled by any method.', 0, 1, 5, 5, 'Dmg', 'SP Dmg', 'Cast Time', 'Cast Delay', 'SP Used'
@@ -1618,7 +1618,7 @@ skilldesc[2082] = new Array('Sacrifice ones HP to do more damage onto an enemy.'
 , '9%', '100%', '9%', '110%', '9%', '120%', '9%', '130%', '9%', '140%');
 
 skilldata[2083] = new Array('Battle Chant', 10, 0, 7, 1048, 1042, 0, 0, 0, 8, 5, 0, 0, 0, 0);
-skilldesc[2083] = new Array('Sing a hymn to cause negative effects onto enemies and to bring positive effects onto the casters forces within a 7x7 radius.', 'Applies to every player and enemy within its range. Note by using this skill, people within can not use potions; but you can receive healing type magic (Heal and Sanctuary). If an enemy uses Lex Divina against Paladin who is using this skill, Gospel will cancel. You cannot overlap this skill with other skills on the caster [only]. While using Gospel, it will periodically take some of the Paladins HP and SP.<br><br>Random Effects [Party]:<br>• +20 to all stats<br>• Cure Status Ailments<br>• Random Heal [1-9999]<br><br> Random Effects [Enemy]<br>• Removal of buffs<br>• Random Status Ailment<br>• Random DEF Bypassed Damage [1-9999]<br>• 0 DEF + 0 VIT<br>• 0 ATK<br>• 0 FLEE<br>• 75% Penalty to ASPD', 3, 1, 10, 4, 'Chance', 'HP Used/sec', 'SP Used/sec', 'SP Used'
+skilldesc[2083] = new Array('Sing a hymn to cause negative effects onto enemies and to bring positive effects onto the casters forces within a 7x7 radius.', 'Applies to every player and enemy within its range. Note by using this skill, people within can not use potions; but you can receive healing type magic (Heal and Sanctuary). If an enemy uses Lex Divina against Paladin who is using this skill, Gospel will cancel. You cannot overlap this skill with other skills on the caster [only]. While using Gospel, it will periodically take some of the Paladins HP and SP.<br><br>Random Effects [Party]:<br>&#8226; +20 to all stats<br>&#8226; Cure Status Ailments<br>&#8226; Random Heal [1-9999]<br><br> Random Effects [Enemy]<br>&#8226; Removal of buffs<br>&#8226; Random Status Ailment<br>&#8226; Random DEF Bypassed Damage [1-9999]<br>&#8226; 0 DEF + 0 VIT<br>&#8226; 0 ATK<br>&#8226; 0 FLEE<br>&#8226; 75% Penalty to ASPD', 3, 1, 10, 4, 'Chance', 'HP Used/sec', 'SP Used/sec', 'SP Used'
 , '55%', '30/10sec', '20 / 10sec', '80', '60%', '30 / 10sec', '20 / 10sec', '80', '65%', '30 / 10sec', '20 / 10sec', '80', '70%', '30 / 10sec', '20 / 10sec', '80', '75%', '30 / 10sec', '20 / 10sec', '80', '80%', '45 / 10sec', '35 / 10sec', '100', '85%', '45 / 10sec', '35 / 10sec', '100', '90%', '45 / 10sec', '35 / 10sec', '100', '95%', '45 / 10sec', '35 / 10sec', '100', '100%', '45 / 10sec', '35 / 10sec', '100');
 
 skilldata[2084] = new Array('Rapid Smiting', 5, 0, 2, 1051, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0);
@@ -1736,10 +1736,10 @@ skilldesc[2284] = new Array('This skill works by casting 4 different kinds of di
 // 59) Taekwon
 // 60) Ninja
 // 61) Gunslinger
-// 62) 
-// 63) 
-// 64) 
-// 65) 
+// 62)
+// 63)
+// 64)
+// 65)
 // 66) Super Novice
 skilldata[2601] = new Array('Sword Mastery', 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 skilldesc[2601] = skilldesc[1];

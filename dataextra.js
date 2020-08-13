@@ -39,7 +39,7 @@ bonusname[35] = 'Forged Def';
 bonusname[36] = 'Atk Bonus Dmg'; // %
 bonusname[40] = 'Attack';// Shuriken
 bonusname[41] = 'Element';// Shuriken
-bonusname[42] = 'All Stats'
+bonusname[42] = 'All Stats';
 bonusname[43] = '';
 bonusname[50] = 'Ranged Atk Bonus Dmg';
 bonusname[51] = 'Neutral Bonus Dmg';	// 0
@@ -218,7 +218,7 @@ bonusname[341] = 'SP Drain';
 bonusname[342] = 'Skill Chance increases';
 bonusname[343] = 'Item Specific [Independant]';
 bonusname[344] = 'Indestructable';
-bonusname[345] = 'Splash Attack'
+bonusname[345] = 'Splash Attack';
 bonusname[346] = 'Magic effects cannot be dispelled';
 
 locations = new Array(800);

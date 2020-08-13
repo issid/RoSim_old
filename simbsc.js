@@ -39,7 +39,7 @@ jobname['female'] = new Array(	'Novice', 'Swordman', 'Magician', 'Archer', 'Acol
 				'Crusader', 'Sage', 'Dancer', 'Monk', 'Alchemist', 'Rogue', 'Soul Linker', 'Ninja', 'Gunslinger', '', '', '', '',
 				'Lord Knight', 'High Wizard', 'Sniper', 'High Priest', 'Mastersmith', 'Assassin Cross', 'Taekwon', 'Ninja', 'Gunslinger', '', '', '', '',
 				'Paladin', 'Scholar', 'Gypsy', 'Champion', 'Biochemist', 'Stalker', 'Taekwon', 'Ninja', 'Gunslinger', '', '', '', '', 'Super Novice', '','Monster Skills', '','');
-				
+
 jobname['male'] = new Array(	'Novice', 'Swordman', 'Magician', 'Archer', 'Acolyte', 'Merchant', 'Thief','Taekwon Boy', 'Ninja', 'Gunslinger', '', '', '', '',
 				'Knight', 'Wizard', 'Hunter', 'Priest', 'Blacksmith', 'Assassin', 'Taekwon Master', 'Ninja', 'Gunslinger', '', '', '', '',
 				'Crusader', 'Sage', 'Bard', 'Monk', 'Alchemist', 'Rogue', 'Soul Linker', 'Ninja', 'Gunslinger', '', '', '', '',
@@ -94,8 +94,8 @@ supportst = new Array();
 supportst[0] = new Array(10,1,10,10,10,5,3,1,1,1,10,1,1,1,1,1,1,5,5,5,1,1,1,1,10,10,10,10,10,10,10,5,5,1,5,1,1,1,1,5);
 supportst[1] = new Array(1,1,1,1,1,1,1,1,1,1,1,10,10,10,5,1,1,1,1,1,1,1,1,1,1,1);
 supportself = new Array();
-supportself[0]=new Array('Concentration Potion','Awakening Potion','Berserk Potion','Auto-Berserk','Energy Coat','Crazy Uproar','Endure','Improve Concentration','Hide','Two-Hand Quicken','Riding Pecopeco','Adrenoline Rush','Power Thrust','Maximise Power','Cloaking','Riding Pecopeco','Guard','Reflect Shield','Defending Aura','Spear Quicken','Autocast','Summon Spirit Sphere','Fury','Mental Strength','Endure', 
-	'Improve Concentration','Hide','Guardian Angel Fury','Angel Mental Strength','Aura Blade','Parry','Spear Dynamo','Relax','Frenzy','Mystical Amplification','Falcon Eyes','Wind Walker', 'Assumptio','Basilica','Maximum Power-Thrust','Enchant Deadly Poison', 'Battle Chant', 'Blinding Mist', 'Fiber Lock', 'Marionette Control', 'Full Chemical Protection', 'Counter Instinct','Ankle Strike', 'Wrist Strike', 'Knee Strike', 
+supportself[0]=new Array('Concentration Potion','Awakening Potion','Berserk Potion','Auto-Berserk','Energy Coat','Crazy Uproar','Endure','Improve Concentration','Hide','Two-Hand Quicken','Riding Pecopeco','Adrenoline Rush','Power Thrust','Maximise Power','Cloaking','Riding Pecopeco','Guard','Reflect Shield','Defending Aura','Spear Quicken','Autocast','Summon Spirit Sphere','Fury','Mental Strength','Endure',
+	'Improve Concentration','Hide','Guardian Angel Fury','Angel Mental Strength','Aura Blade','Parry','Spear Dynamo','Relax','Frenzy','Mystical Amplification','Falcon Eyes','Wind Walker', 'Assumptio','Basilica','Maximum Power-Thrust','Enchant Deadly Poison', 'Battle Chant', 'Blinding Mist', 'Fiber Lock', 'Marionette Control', 'Full Chemical Protection', 'Counter Instinct','Ankle Strike', 'Wrist Strike', 'Knee Strike',
 	'Shoulder Strike','Waist Strike','Neck Strike','Poison Bottle','Cursed Water','Sprint','Kihop','Tumbling','Peaceful Break','Happy Break','Mild Wind','Taekwon Mission','Solar Protection','Lunar Protection','Stellar Protection','Solar Blessing','Lunar Blessing','Stellar Blessing','Solar Wrath','Lunar Wrath','Lunar Wrath','S,L,S Team-Up','S,L,S Courier','S,L,S Union','Alchemist Spirit',
 	'Beserk Potion Pitcher','Adv Adrenaline Rush','Monk Spirit','Priest Spirit','Sage Spirit','Crusader Spirit','One-Hand Quicken','Assassin Spirit','Rogue Spirit','1st Transcendent Spirit','Hunter Spirit', 'Gatling Fever','Coin Flip','Increase Accuracy','Last Stand','Gunslinger\'s Panic','Flip Tatami','Cicada Skin Shed','Watery Evasion','Ninja Aura','Mirror Image','Sight Blaster','Sonic Acceleration','Spiritual Bestowment','Stealth',
 	'Undying Novice');
@@ -282,14 +282,14 @@ function showPopupInfo() {
 	if (arg[0]==5 && arg[1] >= 1 && arg[1] <= 6 && AdvOn) text += 'High ';
 	if (!arg[0]) text += itemdesc[arg[1]][0]+'</strong><br>'+itemdesc[arg[1]][1];
 	else if (arg[0]==1) text += itemdesc[arg[1]][0]+'</strong><br>'+itemdesc[arg[1]][1];
-	else if (arg[0]==2) text += 'In Game Def</strong><br>• '+(def-Math.round(bonusdata[35] * 7 /10) + bonusdata[35]);
+	else if (arg[0]==2) text += 'In Game Def</strong><br>&#8226; '+(def-Math.round(bonusdata[35] * 7 /10) + bonusdata[35]);
 	else if (arg[0]==3) text += itemdata[arg[1]][0]+'</strong>';
 	else if (arg[0]==4) text += colorname[arg[1]]+'</strong>';
 	else if (arg[0]==5 && arg[1] >= 0) text += jobname[sexname[sex]][arg[1]]+'</strong>';
 	else if (arg[0]==5 && arg[1] < 0) text += 'Switch to Transcendant Mode';
 	else if (arg[0]==6) text += 'Required Skill: '+jobname[sexname[sex]][Math.ceil(skilldata[arg[1]][arg[2]]/40)+arg[3]].substring(0,3)+'. '+skilldata[skilldata[arg[1]][arg[2]]][0]+' Lv.'+skilldata[arg[1]][arg[2]+5];
 	else if (arg[0]==7) text += 'Lv.'+skilldata[arg[1]][arg[2]+5]+'->'+jobname[sexname[sex]][Math.ceil(arg[1]/40)+arg[3]].substring(0,3)+'. '+skilldata[arg[1]][0];
-	
+
 	text = "<div style='white-space:nowrap; background-color:#ECECEC; padding:5px; overflow:visible; border-style:solid; border-width:1px; font-size:8pt;'>" + text + "</div>";
 	document.getElementById("PopDescLayer").innerHTML=text;
 	document.getElementById("PopDescLayer").style.left=CursX+8;
@@ -303,7 +303,7 @@ function HidePopUp() { if(overDesc==0) document.getElementById("PopDescLayer").s
 // * Setting up Settings
 function prestart() {
 	MM_showHideLayers('Loading','','hide','LoadingAlpha','','hide');
-	HomeLink.innerHTML = '<img src="img2/mistress_banner4.gif" width="200" height="40" title="Original" border="0"><br>';
+	// HomeLink.innerHTML = '<img src="img2/mistress_banner4.gif" width="200" height="40" title="Original" border="0"><br>';
 	if (navigator.userAgent.indexOf("MSIE") == -1) browserspc = 1;
 	streset();
 	mobsort(0);
@@ -321,12 +321,12 @@ function start(n) {
 	temp = '';
 	if (AdvOn && job <=6) ChrJob.innerHTML = 'High ' + jobname[sexname[sex]][job];
 	else ChrJob.innerHTML = jobname[sexname[sex]][job];
-	
+
 	if (AdvOn) sstp = sstpAdv;
 
 	ChrJobLv.innerHTML = jlv;
 	ChrSex.innerHTML = sexname[sex];
-	
+
 	if (AdvOn && job == 0) temp = 'High_';
 	JobGraphic.innerHTML = '<img src="img2/' + sexname[sex] + '/' + temp+jobname[sexname[sex]][job] + '.gif">';
 	ChrFace.innerHTML = '<img src="img2/' + sexname[sex] + '/' + face + colormanage[hair] + '.gif" border="0">';
@@ -421,9 +421,9 @@ function cartcalc() {
 }
 function bardanreset() {
 	for (i = 0; i <= 7; i++){
-		skilldata[i+1121][0] = bardanname[sex][i];	
+		skilldata[i+1121][0] = bardanname[sex][i];
 	}
-	
+
 	if (AdvOn) for (i=1; i<=70; i++) jobbonus[55][i] = bardanbonus[sex+2][i];
 	else for (i=1; i<=50; i++) jobbonus[29][i] = bardanbonus[sex][i];
 	astabledata[62][0] = 'skill' + sexname[sex] + '/1122.gif';
@@ -536,19 +536,19 @@ function condbonus() {
 	for (i=1; i<=bonusdata[321][0]; i++) if (monsterdata[mnum][19] == Math.abs(bonusdata[321][i])%100) tmpcond++;
 	for (i=1; i<=bonusdata[312][0]; i++) if (monsterdata[mnum][23] == Math.abs(bonusdata[312][i])%1000) tmpcond++;
 	for (i=1; i<=bonusdata[325][0]; i++) if (monsterdata[mnum][19] == Math.abs(bonusdata[325][i])%100) tmpcond++;
-	
+
 	for (i=1; i<=bonusdata[327][0]*3; i+=3) if (monsterdata[mnum][23] == bonusdata[327][i]) tmpcond++;
 	for (i=1; i<=bonusdata[328][0]*3; i+=3) if (monsterdata[mnum][19] == bonusdata[328][i] || bonusdata[328][i] == 2) tmpcond++;
 	for (i=1; i<=bonusdata[329][0]*3; i+=3) if (monsterdata[mnum][20] == bonusdata[329][i]) tmpcond++;
 	if (monsterdata[mnum][20] == 9 && skilllv[1099]) tmpcond++;
 	if(monsterdata[mnum][19] == 1 && bonusdata[75]) tmpcond++;
 	if (tmpcond >= 1) { condbonusdata = true; readbonus(0); statuscalc(1); return true;}
-	else return false;	
+	else return false;
 }
 
 function readbonus(n) {
 	if (!n) resetbonus(1);
-	
+
 	// Combo Checks
 	/*Clean Up*/
 	// Redo
@@ -559,12 +559,12 @@ function readbonus(n) {
 		for (y = 1; y <= combodata[x][0]*2; y += 2) {
 			if (itemwear[combodata[x][y]][0] == 0) z--;
 			if (combodata[x][y+1] > 0) v++;
-			if (itemwear[combodata[x][y]][0] > 1) l += (itemwear[combodata[x][y]][0]-1) 
+			if (itemwear[combodata[x][y]][0] > 1) l += (itemwear[combodata[x][y]][0]-1)
 		}
 		if(rbdebug) DebugText.innerHTML += 'Combo Array [' + x + '] | Remaining [' + Math.abs(z) + '] | Bonus * [' + (l) + ']<br>';
  		if (z == 0) {
 			if (v) for (y = 1; y <= combodata[x][0]*2; y += 2) if (combodata[x][y+1] > 0) itemwear[combodata[x][y]][1] = 1;
-			
+
 			for (h = 1; h <= l; h++) {
 				tmp = false;
 				tmp2 = 0;
@@ -626,7 +626,7 @@ function readbonus(n) {
 					bonusdata[itemdata[eq[i]][j+7]][bonusdata[itemdata[eq[i]][j+7]][0]] = itemdata[eq[i]][j+15];
 				}
 				else if (!tmp) {
-				
+
 					if (i == 5 && (itemdata[eq[5]][j+7] == 1 || itemdata[eq[5]][j+7] == 3)) bonusdata[itemdata[eq[i]][j + 7] + 31] += itemdata[eq[i]][j + 15];
 					if (itemdata[eq[i]][j+7]==324) asbonusdata[skilldata[itemdata[eq[i]][j+15]%10000][14]-1] += (itemdata[eq[i]][j+15]-itemdata[eq[i]][j+15]%10000)/10000;
 					else if (i == 2 && eq[i] == eq[0]) break;
@@ -670,7 +670,7 @@ function readbonus(n) {
 			tmp2 = 0;
 			tmp3 = 0;
 			m = 0;
-			
+
 			if (itemwear[slot[i][k]][1] != 1) {
 				for (j = 0; j <= 7; j++) {
 					if (!itemdata[slot[i][k]][j+7]) tmp = false;
@@ -703,7 +703,7 @@ function readbonus(n) {
 							}
 							else bonusdata[itemdata[slot[i][k]][j + 7]] += itemdata[slot[i][k]][j + 15];
 						}
-						else bonusdata[itemdata[slot[i][k]][j + 7]] += itemdata[slot[i][k]][j + 15];						
+						else bonusdata[itemdata[slot[i][k]][j + 7]] += itemdata[slot[i][k]][j + 15];
 					}
 					if (itemdata[slot[i][k]][j+7] == 324) asbonusdata[skilldata[itemdata[slot[i][k]][j+15]%10000][14]-1] += (itemdata[slot[i][k]][j+15]-itemdata[slot[i][k]][j+15]%10000)/10000;
 				}
@@ -713,7 +713,7 @@ function readbonus(n) {
 		if (itemdata[eq[i]][1] == 8 || itemdata[eq[i]][1] == 9 || itemdata[eq[i]][1] == 13 || itemdata[eq[i]][1] == 15 || itemdata[eq[i]][1] == 17 || itemdata[eq[i]][1] == 19 || itemdata[eq[i]][1] == 23 || itemdata[eq[i]][1] == 24 || (itemdata[eq[i]][1] >= 31 && itemdata[eq[i]][1] <= 36)) i++;
 		else if (itemdata[eq[i]][1] == 10) i += 2;
 	}
-	
+
 	// Conditional Bonuses
 	if (!n) {
 		mnum = eval(document.frm.mnum.value);
@@ -723,7 +723,7 @@ function readbonus(n) {
 		for (i=1; i<=bonusdata[321][0]; i++) if (monsterdata[mnum][19] == Math.abs(bonusdata[321][i])%100) { condbonusdata = true;  bonusdata[22] += (bonusdata[321][i]-bonusdata[321][i]%100)/100; }
 		for (i=1; i<=bonusdata[312][0]; i++) if (monsterdata[mnum][23] == Math.abs(bonusdata[312][i])%1000) { condbonusdata = true;  tempguard += (bonusdata[312][i]-bonusdata[312][i]%1000)/1000; }
 		for (i=1; i<=bonusdata[325][0]; i++) if (monsterdata[mnum][19] == Math.abs(bonusdata[325][i])%100) { condbonusdata = true;  tempguard += (bonusdata[325][i]-bonusdata[321][i]%100)/100; }
-		
+
 		for (i=1; i<=bonusdata[327][0]*3; i+=3) if (monsterdata[mnum][23] == bonusdata[327][i]) { condbonusdata = true;  bonusdata[bonusdata[327][i+1]] += bonusdata[327][i+2]; }
 		for (i=1; i<=bonusdata[328][0]*3; i+=3) if (monsterdata[mnum][19] == bonusdata[328][i] || bonusdata[328][i] == 2) { condbonusdata = true;  bonusdata[bonusdata[328][i+1]] += bonusdata[328][i+2]; }
 		for (i=1; i<=bonusdata[329][0]*3; i+=3) if (monsterdata[mnum][20] == bonusdata[329][i]) { condbonusdata = true;  bonusdata[bonusdata[329][i+1]] += bonusdata[329][i+2]; }
@@ -734,21 +734,21 @@ function readbonus(n) {
 	for (i=1; i<=bonusdata[332][0]*3; i+=3) if (bstatus[bonusdata[332][i]%10] < (bonusdata[332][i]-bonusdata[332][i]%10)/10) bonusdata[bonusdata[332][i+1]] += bonusdata[332][i+2];
 	for (i=1; i<=bonusdata[333][0]*3; i+=3) if (bstatus[bonusdata[333][i]%10] > (bonusdata[333][i]-bonusdata[333][i]%10)/10) bonusdata[bonusdata[333][i+1]] += bonusdata[333][i+2];
 	if(monsterdata[mnum][19] == 1 && bonusdata[75]) bonusdata[36] += bonusdata[75];
-	if (eq[3] == 2358) { 
+	if (eq[3] == 2358) {
 		if (job%13 == 2 || job%13 == 3 || job%13 == 4) bonusdata[207] += 50;
-		else if (job%13 == 1 || job%13 == 5 || job%13 == 6) bonusdata[203] += 50;  
+		else if (job%13 == 1 || job%13 == 5 || job%13 == 6) bonusdata[203] += 50;
 	}
-	if (eq[6] == 2520) { 
+	if (eq[6] == 2520) {
 		if (job%13 == 2 || job%13 == 3 || job%13 == 4) bonusdata[21] += 5;
 		else if (job%13 == 1 || job%13 == 5 || job%13 == 6) bonusdata[212] += 5;
 		bonusdata[21] += plus[6]*2;
 		bonusdata[212] += plus[6]*2;
 	}
-	if (eq[7] == 2420) { 
+	if (eq[7] == 2420) {
 		if (job%13 == 2 || job%13 == 3 || job%13 == 4) bonusdata[7] += blv*5;
 		else if (job%13 == 1 || job%13 == 5 || job%13 == 6) bonusdata[8] += jlv*2;
 	}
-	
+
 	// Forging Calculation
 	for (i = 0; i <= 9; i++){
 		if (slotnum[itemdata[eq[i]][1]] == 41) {
@@ -757,16 +757,16 @@ function readbonus(n) {
 		}
 		else {bonusdata[35] += plus[i];}
 	}
-	
+
 	def = bonusdata[2] + Math.round(bonusdata[35] * 7 /10) - support[106] * 5;
-	
+
 	// Attack Skill Buffs
 	if (support[149]) asbonusdata[71] += blv;
 	if (support[153]) asbonusdata[17] += 500;
 	if (support[155]) asbonusdata[59] += 100;
 	if (support[157]) asbonusdata[54] += 100;
-	
-	//Support Skills	
+
+	//Support Skills
 	bonusdata[8] += skilllv[1301]*30;
 	if (support[2]) bonusdata[12] += support[2]+2;
 	if (support[62]) bonusdata[12] -= support[62]+2;
@@ -794,14 +794,14 @@ function readbonus(n) {
 	bonusdata[14] += Math.round(skilllv[1099]/2) + support[169];
 	bonusdata[16] += support[12]*30;
 	bonusdata[38] += support[5]*5;
-	
+
 	if (support[174]) switch(support[174]) {
 		case 3: bonusdata[11] += 4; break;
 		case 4: bonusdata[11] += 8; break;
 		case 5: bonusdata[11] += 16; break;
-		default: bonusdata[11] += support[174]; break;	
+		default: bonusdata[11] += support[174]; break;
 	}
-	
+
 	for(i=0;i < 6; i++) bonusdata[11+i] += bonusdata[42];
 
 	tmp = 0;
@@ -810,7 +810,7 @@ function readbonus(n) {
 		bonusdata[18] += skilllv[202]*3 + Math.floor(skilllv[1167]*1.5);
 	else
 		bonusdata[18] += skilllv[2645]*3 + Math.floor(skilllv[1167]*1.5);
-		
+
 	if (support[24]) bonusdata[18] += support[24] + Math.floor(baragi/10) + Math.floor(barlessen/2);
 	bonusdata[18] -= support[161]*5;
 	bonusdata[18] += support[165]*30;
@@ -825,7 +825,7 @@ function readbonus(n) {
 	if (support[139]) bonusdata[20] += Math.round((blv+chrdex+chrluk)/10);
 	if (jlv >= 50 && skilllv[775]) bonusdata[20] += skilllv[775]*3;
 	if (skilllv[1084] && itemdata[eq[4]][1] == 21) bonusdata[20] += 0.5*skilllv[1084];
-	
+
 	if (itemdata[eq[4]][1] >= 32 && itemdata[eq[4]][1] <= 36) {
 		bonusdata[19] += skilllv[322]*2;
 		bonusdata[20] += Math.round(skilllv[322]/2);
@@ -858,7 +858,7 @@ function readbonus(n) {
 		bonusdata[3] = 2;
 		bonusdata[34] = 2;
 	}
-	
+
 	if(support[135]) switch (support[135]){
 		case 1: bonusdata[3] = 2; break;
 		case 2: bonusdata[3] = 4; break;
@@ -868,7 +868,7 @@ function readbonus(n) {
 		case 6: bonusdata[3] = 7; break;
 		case 7: bonusdata[3] = 6; break;
 	}
-	
+
 	if (support[8] == 1) bonusdata[4] = 6;
 	if (support[51] == 1) bonusdata[4] = 1;
 	if (support[52] == 1) bonusdata[4] = 2;
@@ -889,7 +889,7 @@ function readbonus(n) {
 	if (support[174]) bonusdata[305] += Math.min(support[158],1);
 	if (support[33] == 1) bonusdata[308] = 1;
 
-	if (support[34]) { 
+	if (support[34]) {
 		for(i=102; i<= 110; i++) bonusdata[i] += 55 + support[34]*5;
 		bonusdata[i] += 50;
 	}
@@ -948,20 +948,20 @@ function readbonus(n) {
 	bonusdata[31] += support[96]*3 + support[173]*3;
 
 	bonusdata[28] += support[67] + support[108];
-	
+
 	if (support[108]) bonusdata[9] += 200;
-	
+
 	bonusdata[10] += skilllv[1683];
 	bonusdata[304] += skilllv[1683]*3;
-	
+
 	if (support[140]) bonusdata[313] += skilllv[769]*10;
 	if (support[141]) bonusdata[313] += skilllv[770]*10;
 	if (support[142]) bonusdata[313] += skilllv[771]*10;
-	
+
 	if (support[148]) bonusdata[254] += 1;
-	
+
 	if (support[172]) asbonusdata[54] += 10;
-	
+
 	if (support[110]) {
 		bonusdata[11] += 5;
 		bonusdata[12] += 5;
@@ -970,7 +970,7 @@ function readbonus(n) {
 		bonusdata[15] += 5;
 		bonusdata[16] += 5;
 	}
-	
+
 	if (support[116]) {
 		bonusdata[11] += 20;
 		bonusdata[12] += 20;
@@ -1003,10 +1003,10 @@ function readbonus(n) {
 		bonusdata[12] += 4;
 		bonusdata[15] += 4;
 	}
-	
+
 	def = def * (100+bonusdata[256])/100;
 	mdef = mdef * (100+bonusdata[257])/100;
-	
+
 	// Status Enhancing Items
 	for (i=0;i<=9;i++) bonusdata[11] += isupport[i]*(i+1);
 	for (i=0;i<=9;i++) bonusdata[12] += isupport[10+i]*(i+1);
@@ -1015,13 +1015,13 @@ function readbonus(n) {
 	for (i=0;i<=9;i++) bonusdata[15] += isupport[40+i]*(i+1);
 	for (i=0;i<=9;i++) bonusdata[16] += isupport[50+i]*(i+1);
 	if (isupport[69]) bonusdata[12] += 7;
-	
+
 	bonusdata[5] += isupport[60]*10 + isupport[61]*10 + isupport[64]*20 + isupport[65]*30;
 	bonusdata[17] += isupport[60]*10 + isupport[61]*10 + isupport[62]*20 + isupport[63]*30;
 	bonusdata[18] += isupport[77]*30;
 	bonusdata[19] += isupport[66]*30;
 	bonusdata[305] += isupport[67]*1 + isupport[69]*1;
-	
+
 	if (isupport[71]) {
 		bonusdata[3] = 7;
 		bonusdata[34] = 7;
@@ -1046,7 +1046,7 @@ function readbonus(n) {
 		bonusdata[3] = 1;
 		bonusdata[34] = 1;
 	}
-	
+
 	// End Caps
 	for (i=0;i<=5;i++) if (bonusdata[11+i] > 99) bonusdata[11+i] = 99; else if (bonusdata[11+i] < 0) bonusdata[11+i] = 0;
 	if (def < 0) def = 0;
@@ -1145,7 +1145,7 @@ function overblvcalc(n){
 function overjlvcalc(n){
 	clearTimeout(i0);
 
-	if (n == 1 && ((job == 0 && jlv < 10) || (job < 40 && jlv < 50 && job != 8 && job != 9)|| 
+	if (n == 1 && ((job == 0 && jlv < 10) || (job < 40 && jlv < 50 && job != 8 && job != 9)||
 		((job >= 21 || (job >= 8 && job <= 13)) && jlv < 70) ||  (job == 66 && jlv < 99) )) {
 		jlv++;
 		nullskill++;
@@ -1193,7 +1193,7 @@ function statuscalc(m) {
 
 	minbonusatk = Math.min(Math.max(plusbonus[itemdata[eq[4]][5]] * (plus[4] - 8 + itemdata[eq[4]][5]), 0), 1);
 	maxbonusatk = Math.max(plusbonus[itemdata[eq[4]][5]] * (plus[4] - 8 + itemdata[eq[4]][5]), 0);
-	
+
 	if(scdebug) DebugText.innerHTML = "<br>Bonus Attack [Right] = "+minbonusatk+" ~ "+maxbonusatk+"<br>";
 
 	if (itemdata[eq[5]][1] == 12 || itemdata[eq[5]][1] == 14 || itemdata[eq[5]][1] == 16 || itemdata[eq[5]][1] == 20) {
@@ -1221,7 +1221,7 @@ function statuscalc(m) {
 		baseatk = chrstr + Math.pow(Math.floor(chrstr / 10), 2) + Math.floor(chrdex / 5) + Math.floor(chrluk / 5) + bonusdata[17];
 		minatk = baseatk + Math.min(Math.floor(chrdex * wealvdex[itemdata[eq[4]][5]]), bonusdata[1]) + bonusdata[38];
 		maxatk = Math.max(baseatk + bonusdata[1], minatk-bonusdata[38]) + bonusdata[38];
-		
+
 		if(scdebug) DebugText.innerHTML += "Base Attack = "+baseatk+"<br>Weapon Atk [Right] = "+minatk+" ~ "+maxatk+"<br>";
 		if (itemdata[eq[5]][1] == 12 || itemdata[eq[5]][1] == 14 || itemdata[eq[5]][1] == 16 || itemdata[eq[5]][1] == 20) {
 			minatk_l = baseatk + Math.min(Math.floor(chrdex * wealvdex[itemdata[eq[5]][5]]), bonusdata[32]) + bonusdata[38];
@@ -1242,11 +1242,11 @@ function statuscalc(m) {
 	if (support[88] == 1){ minatk = maxatk; minatk_l = maxatk_l; }
 	minatk += Math.floor(support[106]*0.05);
 	maxatk += Math.floor(support[106]*0.05);
-	
+
 	if (support[143]) bonusdata[36] += Math.round((blv+chrluk+chrdex)/(12-skilllv[772]*3));
 	if (support[144]) bonusdata[36] += Math.round((blv+chrluk+chrdex)/(12-skilllv[773]*3));
 	if (support[145]) bonusdata[36] += Math.round((blv+chrstr+chrluk+chrdex)/(12-skilllv[774]*3));
-	
+
 
 	//VitDef, IntMdef Calc
 	if (!bonusdata[28]) {
@@ -1261,12 +1261,12 @@ function statuscalc(m) {
 	imdef = chrint+Math.floor(chrvit/2);
 	if (support[125]) def = Math.floor(def / 2);
 	if (support[126]) def -= Math.floor(def * (25/100));
-	if (support[137]) def += Math.round((blv+chrdex+chrluk)/10);	
+	if (support[137]) def += Math.round((blv+chrdex+chrluk)/10);
 
 	//Matk Calc
 	minmatk = Math.floor((chrint + Math.pow(Math.floor(chrint / 7), 2)) * ((100 + bonusdata[5]) / 100) * (100 + support[109]*5) / 100);
 	maxmatk = Math.floor((chrint + Math.pow(Math.floor(chrint / 5), 2)) * ((100 + bonusdata[5]) / 100) * (100 + support[109]*5) / 100);
-	
+
 
 	//HitFleeLuckyCritical Calc
 	hit = Math.ceil((blv + chrdex + bonusdata[19]) * ((100 - support[56]*25)/100) * (100 + support[110]*3)/100);
@@ -1295,9 +1295,9 @@ function statuscalc(m) {
 	if (support[85]) brecharge += 500 - skilllv[530] * 100;
 	if (support[90]) brecharge += 500 - skilllv[1047] * 100;
 	if (support[93]) brecharge += 550 - support[93] * 50;
-	
+
 	recharge = Math.ceil(brecharge * (100-bonusdata[20]) / 100);
-	
+
 	if (support[123]) aspd = ((2000 - recharge) - Math.ceil((2000 - recharge) * (25/100))) / 10;
 	else if (support[124]) aspd = ((2000 - recharge) - Math.ceil((2000 - recharge) * (10/100))) / 10;
 	else aspd = (2000 - recharge) / 10;
@@ -1324,8 +1324,8 @@ function statuscalc(m) {
 	if (support[136]) {
 		maxhp *= 3;
 		maxsp *= 3;
-	}	
-	
+	}
+
 	//Weight Calc
 	mweight = Math.round((2000 + wbonus[job] + bstatus[0] * 30 + Math.max(skilllv[161], skilllv[2637]) * 200) * (support[147]*10+100)/100);
 
@@ -1356,7 +1356,7 @@ function statuscalc(m) {
 	if (support[107]) skhpr *=3 ;
 	if (support[134]) skspr = Math.floor((maxsp / 500 + 3) * skilllv[254]);
 	else skspr = Math.floor(((maxsp / 500 + 3) * Math.max(skilllv[291],Math.max(skilllv[2607],Math.max(skilllv[41], skilllv[641]))) + (maxsp / 500 + 2) * skilllv[1162]) * (100 + skilllv[1683]*3)/100);
-		
+
 	if (support[50]) {
 		hpr = 0;
 		spr = 0;
@@ -1431,7 +1431,7 @@ function statuscalc(m) {
 	for (i=1; i<=bonusdata[321][0]; i++) { if (monsterdata[mnum][19] == Math.abs(bonusdata[321][i])%100) etcpm += '<b>'; etcpm += 'Additional Critical to ' + classname[Math.abs(bonusdata[321][i])%100] + ' Family: +' + (bonusdata[321][i]-bonusdata[321][i]%100)/100 + '<br>'; if (monsterdata[mnum][19] == Math.abs(bonusdata[321][i])%100) etcpm += '</b>';}
 	for (i=1; i<=bonusdata[312][0]; i++) { if (monsterdata[mnum][23] == Math.abs(bonusdata[312][i])%1000) etcpm += '<b>'; etcpm += 'Dmg Resistance Vs. ' + spcmon[Math.abs(bonusdata[312][i])%1000] + ': +' + (bonusdata[312][i]-bonusdata[312][i]%1000)/1000 + '<br>'; if(monsterdata[mnum][23] == Math.abs(bonusdata[312][i])%1000) etcpm += '</b>';}
 	for (i=1; i<=bonusdata[325][0]; i++) { if (monsterdata[mnum][19] == Math.abs(bonusdata[325][i])%100) etcpm += '<b>'; etcpm += 'Dmg Resistance Vs. ' + classname[Math.abs(bonusdata[325][i])%100] + ' Family: +' + (bonusdata[325][i]-bonusdata[325][i]%100)/100 + '<br>'; if (monsterdata[mnum][19] == Math.abs(bonusdata[325][i])%100) etcpm += '</b>';}
-	for (i=1; i<=bonusdata[327][0]*3; i+=3) { if (monsterdata[mnum][23] == bonusdata[327][i]) etcpm += '<b>'; etcpm += 'Everytime you fight ' + spcmon[bonusdata[327][i]] + ': ' + bonusname[bonusdata[327][i+1]] + ' [' + bonusdata[327][i+2] + ']<br>'; if(monsterdata[mnum][23] == bonusdata[327][i]) etcpm += '</b>';} 
+	for (i=1; i<=bonusdata[327][0]*3; i+=3) { if (monsterdata[mnum][23] == bonusdata[327][i]) etcpm += '<b>'; etcpm += 'Everytime you fight ' + spcmon[bonusdata[327][i]] + ': ' + bonusname[bonusdata[327][i+1]] + ' [' + bonusdata[327][i+2] + ']<br>'; if(monsterdata[mnum][23] == bonusdata[327][i]) etcpm += '</b>';}
 	for (i=1; i<=bonusdata[328][0]*3; i+=3) { if (monsterdata[mnum][19] == bonusdata[328][i] || bonusdata[328][i] == 2) etcpm += '<b>'; etcpm += 'Everytime you fight ' + classname[bonusdata[328][i]] + ' Family: ' +   bonusname[bonusdata[328][i+1]] + ' [' + bonusdata[328][i+2] + ']<br>'; if (monsterdata[mnum][19] == bonusdata[328][i] || bonusdata[328][i] == 2) etcpm += '</b>';}
 	for (i=1; i<=bonusdata[329][0]*3; i+=3) { if (monsterdata[mnum][20] == bonusdata[329][i]) etcpm += '<b>'; etcpm += 'Everytime you fight ' + propname[bonusdata[329][i]+9] + ' Monsters: ' + bonusname[bonusdata[329][i+1]] + ' [' + bonusdata[329][i+2] + ']<br>'; if (monsterdata[mnum][20] == bonusdata[329][i]) etcpm += '</b>';}
 	for (i = 199; i <= 209; i++) if (bonusdata[i]) etcpm += stname[i - 199] + ' Defense Rate: ' + Math.min(bonusdata[i], 100) + '%<br>';
@@ -1470,7 +1470,7 @@ function statuscalc(m) {
 	if (support[117]) etcpm += 'Long Range Skills: 75% Reduced Hit Rate<br>';
 	if (support[117]) etcpm += 'Long Range Attacks: 50% Reduced Damage<br>';
 	if (support[10]) etcpm += 'Complete Def Amount: ' + Math.floor(maxhp * (support[10]*2 + 10)/100) + '<br>';
-	if (bonusdata[0]) etcpm += '• There is a bug in the item database. Please head over to <a href="http://www.ragnasim.net/forum/">our forums</a> boards and post the error there.<br>';
+	if (bonusdata[0]) etcpm += '&#8226; There is a bug in the item database. Please head over to <a href="http://www.ragnasim.net/forum/">our forums</a> boards and post the error there.<br>';
 //	if (bonusdata[]) etcpm += '' + bonusdata[] + '<br>';
 
 	EtcStatus.innerHTML = etcpm;
@@ -1532,7 +1532,7 @@ function etcstatuslisting() {
 	// Awakening Potion
 	if (blv>=40 && job!=4 && job!=17 && job!=29 && job!=43 && job!=55) tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(76,event.button);" onMouseUp="etcstatuscalc(76,-1);" onMouseOut="etcstatuscalc(76,-1);" onClick="return false"><img src="img2/icon/656.gif" width="24" height="24" border="0"></a></td><td width="169">Awakening Potion <span id="ChrSupportLvView76">'+supportonoff[support[76]]+'</span></td></tr>';
 	// Beserk Potion
-	if (blv>=85 && (job==1 || job==2 || job==5 || job==7 || job==8 || job ==9 || job==14 || job==15 || job==18 || job==20 || job==27 || job==31 || job==32 || job ==33 || job==40 || job==41 || job==44 || job==53 || job==57 || job==58)) 
+	if (blv>=85 && (job==1 || job==2 || job==5 || job==7 || job==8 || job ==9 || job==14 || job==15 || job==18 || job==20 || job==27 || job==31 || job==32 || job ==33 || job==40 || job==41 || job==44 || job==53 || job==57 || job==58))
 		tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(77,event.button);" onMouseUp="etcstatuscalc(77,-1);" onMouseOut="etcstatuscalc(77,-1);" onClick="return false"><img src="img2/icon/657.gif" width="24" height="24" border="0"></a></td><td width="169">Berserk Potion <span id="ChrSupportLvView77">'+supportonoff[support[77]]+'</span></td></tr>';
 	// Poison Bottle
 	if (job==45) tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(128,event.button);" onMouseUp="etcstatuscalc(128,-1);" onMouseOut="etcstatuscalc(128,-1);" onClick="return false"><img src="img2/icon/678.gif" width="24" height="24" border="0"></a></td><td width="169">Poison Bottle <span id="ChrSupportLvView128">'+supportonoff[support[128]]+'</span></td></tr>';
@@ -1543,9 +1543,9 @@ function etcstatuslisting() {
 	if (jlv>=15 && (job-1)%13+1==5) tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(80,event.button);" onMouseUp="etcstatuscalc(80,-1);" onMouseOut="etcstatuscalc(80,-1);" onClick="return false"><img src="img2/skill/mc_loud.gif" width="24" height="24" border="0"></a></td><td width="169">'+supportself[0][5]+' <span id="ChrSupportLvView80">'+supportonoff[support[80]]+'</span></td></tr>';
 	if (job==66) {
 		tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(102,event.button);" onMouseUp="etcstatuscalc(102,-1);" onMouseOut="etcstatuscalc(102,-1);" onClick="return false"><img src="img2/skillmale/'+supportself[1][22]+'.gif" width="24" height="24" border="0"></a></td><td width="169">'+supportself[0][27]+' <span id="ChrSupportLvView102">'+supportonoff[support[102]]+'</span></td></tr>';
-		tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(103,event.button);" onMouseUp="etcstatuscalc(103,-1);" onMouseOut="etcstatuscalc(103,-1);" onClick="return false"><img src="img2/skillmale/'+supportself[1][23]+'.gif" width="24" height="24" border="0"></a></td><td width="169">'+supportself[0][28]+' <span id="ChrSupportLvView103">'+supportonoff[support[103]]+'</span></td></tr>';	
+		tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(103,event.button);" onMouseUp="etcstatuscalc(103,-1);" onMouseOut="etcstatuscalc(103,-1);" onClick="return false"><img src="img2/skillmale/'+supportself[1][23]+'.gif" width="24" height="24" border="0"></a></td><td width="169">'+supportself[0][28]+' <span id="ChrSupportLvView103">'+supportonoff[support[103]]+'</span></td></tr>';
 	}
-	
+
 	// Listed Skills
 	for (i=6; i<=100; i++) {
 		a = Math.max(Math.floor((i+75)/25)-1,0);
@@ -1576,11 +1576,11 @@ function etcstatuslisting() {
 	if (!skilllv[724] && slot[6][0] == 4088) tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onMouseDown="etcstatuscalc(89,event.button);" onMouseUp="etcstatuscalc(89,-1);" onMouseOut="etcstatuscalc(89,-1);" onClick="return false"><img onMouseOver="skviewdesc(0,'+supportself[1][14]+');" src="img2/skillmale/'+supportself[1][14]+'.gif" width="24" height="24" border="0"></a></td><td width="169">'+supportself[0][14]+' <span id="ChrSupportLvView'+(89)+'"></span></td></tr>';
 	// Push Cart
 	if ((job-1)%13+1 == 5 && skilllv[164]) tmp += '<tr bgcolor="#FFFFFF"><td width="24"><a href="#" onClick="opencart();"><img src="img2/skillmale/164.gif" height="24" width="24" border="0"></a></td><td width="169"><a href="#" onClick="opencart();">Push Cart Options</a></td></tr>';
-	
+
 	tmp += '</table>';
 	if (tmp3) tmp2 += tmp3+'</table>';
 	else tmp2 = '';
-	
+
 	SelfEtcStatus.innerHTML = tmp;
 	ClassSpecStatus.innerHTML = tmp2;
 }
@@ -1594,7 +1594,7 @@ function etcstatuscalc(l, m) {
 		if (keypressed==96) support[l] = supportst[a][b];
 		else support[l]++;
 		support[l] = Math.min(support[l], supportst[a][b]);
-		if (((l >= 81 && l < 122) || l > 129) && supportself[1][l-75] > 1 && l != 95 && l!=102 && l!=103 && l!=111 && l!=112 && 
+		if (((l >= 81 && l < 122) || l > 129) && supportself[1][l-75] > 1 && l != 95 && l!=102 && l!=103 && l!=111 && l!=112 &&
 			l!=113 && l!=116 && l!=117 && l!=118 && l!=119 && l!=120 && l!=131 && l!=162)
 			 support[l] = Math.min(support[l], skilllv[supportself[1][l-75]]);
 	}
@@ -1630,12 +1630,12 @@ function itemstatuscalc(l,m) {
 	if (m == 1) isupport[l] = 1;
 	else if (m == 2) isupport[l] = 0;
 	else return;
-		
+
 	itemstatuscheck(l);
-	
+
 	if(isupport[l] == 1) document.getElementById('ItmSupportLvView' + l).innerHTML = '<font color="#4682B4">On</font>';
 	else document.getElementById('ItmSupportLvView' + l).innerHTML = supoff;
-	
+
 	readbonus(0);
 	statuscalc(0);
 	return;
@@ -1712,7 +1712,7 @@ function kls() {
 		}
 		else {
 			isupport[argk[l]] = 0;
-			tmp = 'Itm';	
+			tmp = 'Itm';
 		}
 		if(argk) document.getElementById(tmp+'SupportLvView'+argk[l]).innerHTML = supoff;
 
